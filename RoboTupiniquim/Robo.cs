@@ -87,10 +87,12 @@ namespace RoboTupiniquim
                 Console.Write(y + " ");
                 for (int x = 0; x < 10; x++)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     if (x == PosicaoX && y == PosicaoY)
                         Console.Write("R ");
                     else
                         Console.Write("- ");
+                    Console.ResetColor();
                 }
                 Console.WriteLine();
             }
