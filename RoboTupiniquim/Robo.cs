@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoboTupiniquim
 {
     class Robo
     {
-        public static int PosicaoX;
-        public static int PosicaoY;
-        public static char Direcao;
+        public int PosicaoX;
+        public int PosicaoY;
+        public char Direcao;
 
-        public static void Mover(string comandos)
+        public Robo(int x, int y, char direcao)
+        {
+            PosicaoX = x;
+            PosicaoY = y;
+            Direcao = direcao;
+        }
+
+        public void Mover(string comandos)
         {
             foreach (char comando in comandos)
             {
@@ -30,7 +33,8 @@ namespace RoboTupiniquim
                 }
             }
         }
-            public static void MoverParaFrente()
+
+        private void MoverParaFrente()
         {
             switch (Direcao)
             {
@@ -49,47 +53,54 @@ namespace RoboTupiniquim
             }
         }
 
-        public static void VirarDireita()
+        private void VirarDireita()
         {
             switch (Direcao)
             {
-                case 'N':
-                    Direcao = 'L';
-                    break;
-                case 'L':
-                    Direcao = 'S';
-                    break;
-                case 'S':
-                    Direcao = 'O';
-                    break;
-                case 'O':
-                    Direcao = 'N';
-                    break;
+                case 'N': Direcao = 'L'; break;
+                case 'L': Direcao = 'S'; break;
+                case 'S': Direcao = 'O'; break;
+                case 'O': Direcao = 'N'; break;
             }
         }
 
-        public static void VirarEsquerda()
+        private void VirarEsquerda()
         {
             switch (Direcao)
             {
-                case 'N':
-                    Direcao = 'O';
-                    break;
-                case 'L':
-                    Direcao = 'N';
-                    break;
-                case 'S':
-                    Direcao = 'L';
-                    break;
-                case 'O':
-                    Direcao = 'S';
-                    break;
+                case 'N': Direcao = 'O'; break;
+                case 'L': Direcao = 'N'; break;
+                case 'S': Direcao = 'L'; break;
+                case 'O': Direcao = 'S'; break;
             }
         }
 
-        public static void ExibirCoordenadas()
+        public void ExibirCoordenadas()
         {
             Console.WriteLine($"Posição final: {PosicaoX} {PosicaoY} {Direcao}");
+        }
+
+        public void MostrarNoMapa()
+        {
+            for (int y = 9; y >= 0; y--)
+            {
+                Console.Write(y + " ");
+                for (int x = 0; x < 10; x++)
+                {
+                    if (x == PosicaoX && y == PosicaoY)
+                        Console.Write("R ");
+                    else
+                        Console.Write("- ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.Write("  ");
+            for (int x = 0; x < 10; x++)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine("\n");
         }
     }
 }

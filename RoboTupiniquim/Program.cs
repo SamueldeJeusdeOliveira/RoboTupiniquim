@@ -4,28 +4,37 @@
     {
         public static void Main(string[] args)
         {
-            Robo robo1 = new Robo();
+            Console.WriteLine("Digite a posição inicial do Robo 1:");
+            string posicaoInicial = Console.ReadLine();
+            Console.WriteLine("Digite os comandos:");
+            string comandos = Console.ReadLine();
 
-            string posicaoInicial = "3 3 L";
-            string comandos = "MMDMMDMDDM";
+            string[] dados1 = posicaoInicial.Split(' ');
+            Robo robo1 = new Robo(
+                Convert.ToInt32(dados1[0]),
+                Convert.ToInt32(dados1[1]),
+                dados1[2][0]
+            );
 
-            string[] coordenadasIniciais = posicaoInicial.Split(' ');
-            Robo.PosicaoX = Convert.ToInt32(coordenadasIniciais[0]);
-            Robo.PosicaoY = Convert.ToInt32(coordenadasIniciais[1]);
-            Robo.Direcao = coordenadasIniciais[2][0];
+            robo1.Mover(comandos);
+            robo1.ExibirCoordenadas();
+            robo1.MostrarNoMapa();
 
-            Robo.ExibirCoordenadas();
-            Robo robo2 = new Robo();
-            string posicaoInicial2 = "4 1 O";
-            string comandos2 = "MMDMMDMDDM";
+            Console.WriteLine("Digite a posição inicial do Robo 2:");
+            string posicaoInicial2 = Console.ReadLine();
+            Console.WriteLine("Digite os comandos:");
+            string comandos2 = Console.ReadLine();
 
-            string[] coordenadasIniciais2 = posicaoInicial2.Split(' ');
-            Robo.PosicaoX = Convert.ToInt32(coordenadasIniciais2[0]);
-            Robo.PosicaoY = Convert.ToInt32(coordenadasIniciais2[1]);
-            Robo.Direcao = coordenadasIniciais2[2][0];
-            Robo.Mover(comandos2);
+            string[] dados2 = posicaoInicial2.Split(' ');
+            Robo robo2 = new Robo(
+                Convert.ToInt32(dados2[0]),
+                Convert.ToInt32(dados2[1]),
+                dados2[2][0]
+            );
 
-            Robo.ExibirCoordenadas();
+            robo2.Mover(comandos2);
+            robo2.ExibirCoordenadas();
+            robo2.MostrarNoMapa();
         }
     }
 }
